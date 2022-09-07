@@ -15,3 +15,15 @@ let pokemonList = [
     types: "Water",
   },
 ];
+
+for (let i = 0; i < pokemonList.length; i++) {
+  if (pokemonList[i].height > 0.6) {
+    document.write(
+      `--Name: ${pokemonList[i].name}; height: ${pokemonList[i].height} Wow thats Big!`
+    );
+  } else {
+    document.write(
+      `--Name: ${pokemonList[i].name}; height: ${pokemonList[i].height}`
+    );
+  }
+}
