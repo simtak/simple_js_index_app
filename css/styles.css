@@ -1,0 +1,20 @@
+* {
+  box-sizing: border-box;
+}
+
+.pokemon-list {
+  list-style: none;
+  margin: 0 auto;
+  max-width: 700px;
+  text-align: center;
+}
+
+.list-item-class {
+  display: block;
+}
+
+.button-1 {
+  height: 30px;
+  width: 100%;
+  margin-top: 5px;
+}

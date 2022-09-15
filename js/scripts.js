@@ -24,23 +24,24 @@ let pokemonRepository = (function () {
   function getAll() {
     return pokemonList;
   }
+  function addListItem(pokemon) {
+    let pokeList = document.querySelector(".pokemon-list");
+    let listItem = document.createElement("li");
+    let button = document.createElement("button");
+    button.innerText = pokemon.name;
+    button.classList.add("button-1");
+    listItem.classList.add("list-item-class");
+    listItem.appendChild(button);
+    pokeList.appendChild(listItem);
+  }
 
   return {
     add: add,
     getAll: getAll,
+    allListItem: addListItem,
   };
 })();
 
-pokemonRepository.getAll().forEach(function (list) {
-  if (list.height > 0.6) {
-    document.write(
-      "<p>" +
-        `--Name: ${list.name}; height: ${list.height} Wow thats Big!` +
-        "</p>"
-    );
-  } else {
-    document.write(
-      "<p>" + `--Name: ${list.name}; height: ${list.height}` + "</p>"
-    );
-  }
+pokemonRepository.getAll().forEach(function (item) {
+  pokemonRepository.allListItem(item);
 });
