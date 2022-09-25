@@ -104,12 +104,14 @@ let pokemonRepository = (function () {
   function hideModal() {
     let modalContainer = document.querySelector(".modal-container");
     modalContainer.classList.remove("is-visible");
+    emptyModalContainer();
   }
 
   window.addEventListener("keydown", (e) => {
     let modalContainer = document.querySelector(".modal-container");
     if (e.key === "Escape" && modalContainer.classList.contains("is-visible")) {
       hideModal();
+      emptyModalContainer();
     }
   });
 
@@ -119,14 +121,21 @@ let pokemonRepository = (function () {
     let target = e.target;
     if (target === modalContainer) {
       hideModal();
+      emptyModalContainer();
     }
   });
+
+  function emptyModalContainer() {
+    modalContainer.innerHTML = "";
+    modalContent.innerHTML = "";
+  }
 
   return {
     add: add,
     getAll: getAll,
     addListItem: addListItem,
     loadList: loadList,
+    emptyModalContainer: emptyModalContainer,
   };
 })();
 
