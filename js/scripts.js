@@ -48,10 +48,12 @@ let pokemonRepository = (function () {
     let button = document.createElement("button");
 
     button.innerText = pokemon.name;
-    button.classList.add("button-1");
-    listItem.classList.add("list-item-class");
+    listItem.classList.add("list-group-item", "d-grid");
+    button.classList.add("btn", "btn-primary");
     listItem.appendChild(button);
     pokeList.appendChild(listItem);
+    button.setAttribute("data-bs-toggle", "modal");
+    button.setAttribute("data-bs-target", "#Modal1");
 
     button.addEventListener("click", function () {
       showDetails(pokemon);
@@ -60,7 +62,15 @@ let pokemonRepository = (function () {
 
   function showDetails(pokemon) {
     loadDetails(pokemon).then(function () {
-      console.log(pokemon);
+      let pokemonName = document.querySelector("#pokemon-name");
+      pokemonName.innerText = pokemon.name;
+
+      let pokemonImage = document.querySelector("#pokemon-img");
+      pokemonImage.src = pokemon.imageUrl;
+      pokemonImage.alt = "A front image of the choosen pokemon";
+
+      let pokemonHeight = document.querySelector("#pokemon-height");
+      pokemonHeight.innerHTML = `Height: ${pokemon.height}`;
     });
   }
 
